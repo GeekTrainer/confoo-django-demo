@@ -1,0 +1,29 @@
+FROM python:latest
+
+# For server
+# COPY . /app
+# WORKDIR /app
+
+# For workspace
+WORKDIR /workspace
+
+# For standalone
+# RUN <<EOF
+# pip install -r requirements.txt
+# python manage.py setup_demo --skip_superuser
+# EOF
+
+# For docker-compose
+# RUN <<EOF
+# chmod +x /app/start.sh
+# pip install -r requirements.txt
+# EOF
+
+ENV PYTHONUNBUFFERED=1
+EXPOSE 8000
+
+# For server, start the server
+# CMD ["/app/start.sh"]
+
+# For workspace, don't start anything. Just sleep.
+CMD ["sleep", "infinity"]
